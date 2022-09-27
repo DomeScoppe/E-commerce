@@ -7,12 +7,13 @@ const NavBar = () => {
       <header>
         <nav className="navbar navbar-expand-xxl navbar-light bg-primary d-flex">
           <div className="container-fluid d-flex">
-            <Link to={"/"}>
+            
+            <div className="collapse navbar-collapse d-flex justify-content-start" ><Link to={"/"}>
               {" "}
               <p className="navbar-brand">$HOP</p>
             </Link>
-
-            <CartWidget />
+          </div>
+            
             <div
               className="collapse navbar-collapse d-flex justify-content-center"
               id="navbarNavAltMarkup"
@@ -30,7 +31,14 @@ const NavBar = () => {
                   {" "}
                   <p className="navbar-brand">Licores</p>
                 </Link>
+                  
               </div>
+
+
+              <div  className="collapse navbar-collapse d-flex justify-content-end">
+                <CartWidget />
+              </div>
+              
             </div>
           </div>
         </nav>

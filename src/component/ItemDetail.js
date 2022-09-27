@@ -15,15 +15,22 @@ const ItemDetail = ({ item }) => {
 
   return (
     <>
-      <div className="card w-25 m-5 d-xl-inline-flex">
-        <img className="card-img-top" src={item.img} alt={item.description} />
-      </div>
-      <div className="card-body">
-        <h5 className="card-title">{item.name}</h5>
-        <p className="card-text">$ {item.cost} </p>
-        <p className="card-text">Stock: {item.stock} </p>
-        <p className="card-text">Descripcion: {item.description}</p>
-      </div>
+    <div className="card mb-3 m-5 ">
+      <div className=" row g-0 ">
+        <div className=" col-md-4 ">
+          <img className=" img-fluid rounded-star" src={item.img} alt={item.description} />
+        </div>
+      
+   
+
+      <div className ="col-md-8">
+        <div className="card-body">
+          <h5 className="card-title">{item.name}</h5>
+          <p className="card-text">$ {item.cost} </p>
+          <p className="card-text">Stock: {item.stock} </p>
+          <p className="card-text">Descripcion: {item.description}</p>
+        </div>
+      
       {count === 0 ? (
         <ItemCount ini={count} stock={item.stock} onAdd={onAdd} />
       ) : (
@@ -33,6 +40,9 @@ const ItemDetail = ({ item }) => {
           </button>
         </Link>
       )}
+      </div>
+      </div>
+    </div>  
     </>
   );
 };
