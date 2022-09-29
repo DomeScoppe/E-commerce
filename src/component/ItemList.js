@@ -1,8 +1,11 @@
-import itemCall  from "../utils/itemCall"
+// import itemCall  from "../utils/itemCall"
 import Item from "./Item";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-const { itemData } = require("../utils/itemData");
+// const { itemData } = require("../utils/itemData");
+import { firestoreFetch } from "../utils/firebaseConfig";
+
+
 
 const ItemList = () =>
 {
@@ -10,19 +13,9 @@ const ItemList = () =>
     const [product, setProduct] = useState([]);
     useEffect(() =>
     {
-        if(id)
-        {
-            itemCall(itemData.filter(item => item.categoryId === id))
-                .then(result => setProduct(result))
-                .catch(err => console.log(err))    
-        }
-        else
-        {
-            itemCall(itemData)
-                .then(result => setProduct(result))
-                .catch(err => console.log(err))
-        }
-    }, [id])
+        firestoreFetch()
+            .then(result => setProduct(result))
+    },[id])
 
     return(
         <>
