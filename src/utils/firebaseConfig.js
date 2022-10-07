@@ -13,14 +13,13 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: "AIzaSyAFRr-sr9JCEM_9s_UPdd0i2UIxmkDF-SE",
-	authDomain: "react-ecomm-coderhouse.firebaseapp.com",
-	projectId: "react-ecomm-coderhouse",
-	storageBucket: "react-ecomm-coderhouse.appspot.com",
-	messagingSenderId: "412607354277",
-	appId: "1:412607354277:web:80617b4e0f5f0e5d0dc44c",
-};
-
+	apiKey: "AIzaSyCjd5DkR_KcYlBuLmLnJcvWKtd_3IPh6_8",
+	authDomain: "e-comm-cerve.firebaseapp.com",
+	projectId: "e-comm-cerve",
+	storageBucket: "e-comm-cerve.appspot.com",
+	messagingSenderId: "961759771047",
+	appId: "1:961759771047:web:7f518d5cceade30d731e82"
+  };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
