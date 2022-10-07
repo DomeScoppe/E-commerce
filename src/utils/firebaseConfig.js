@@ -13,51 +13,41 @@ import {
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-	apiKey: "AIzaSyAFRr-sr9JCEM_9s_UPdd0i2UIxmkDF-SE",
-	authDomain: "react-ecomm-coderhouse.firebaseapp.com",
-	projectId: "react-ecomm-coderhouse",
-	storageBucket: "react-ecomm-coderhouse.appspot.com",
-	messagingSenderId: "412607354277",
-	appId: "1:412607354277:web:80617b4e0f5f0e5d0dc44c",
+	apiKey: "AIzaSyCjd5DkR_KcYlBuLmLnJcvWKtd_3IPh6_8",
+	authDomain: "e-comm-cerve.firebaseapp.com",
+	projectId: "e-comm-cerve",
+	storageBucket: "e-comm-cerve.appspot.com",
+	messagingSenderId: "961759771047",
+	appId: "1:961759771047:web:7f518d5cceade30d731e82"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
-export const firestoreFetch =  async(categoryId) => {
+export const firestoreFetch = async (categoryId) => {
 	let q = query(collection(db, "products"));
 	if (categoryId) {
 		q = query(
 			collection(db, "products"),
-			where("products", "==", categoryId)
+			where("categoryId", "==", categoryId)
 		);
+		console.log(q, "qif")
 	} else {
 		q = query(collection(db, "products"));
+		console.log(q, "qelse")
 	}
 	const querySnapshot = await getDocs(q);
+	console.log(querySnapshot, "querySnapshot")
 	const dataFromFirestore = querySnapshot.docs.map((doc) => {
 		return {
 			id: doc.id,
 			...doc.data(),
 		};
+
 	});
+	console.log(dataFromFirestore, "dataFromFirestore")
+	// const dataFiltered = dataFromFirestore.filter(elem => elem.products === categoryId)
 	return dataFromFirestore;
 };
 
-export const getOneItem = async (id) => {
-	const docRef = doc(db, "products", id);
-	const docSnap = await getDoc(docRef);
-
-	if (docSnap.exists()) {
-        const item = {
-            id : docSnap.id,
-            ...docSnap.data()
-        }
-        return item;
-
-	} else {
-		// doc.data() will be undefined in this case
-		console.log("No such document!");
-	}
-};

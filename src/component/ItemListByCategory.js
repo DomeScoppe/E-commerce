@@ -1,4 +1,3 @@
-// import itemCall  from "../utils/itemCall"
 import Item from "./Item";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
@@ -7,9 +6,9 @@ import { firestoreFetch } from "../utils/firebaseConfig";
 
 
 
-const ItemList = () => {
-    const { id } = useParams();
+const ItemListByCategory = () => {
     // console.log(id)
+    const { id } = useParams();
     const [product, setProduct] = useState([]);
     useEffect(() => {
         // console.log(product)
@@ -17,12 +16,12 @@ const ItemList = () => {
             .then(result => setProduct(result))
 
         console.log(product)
-    }, [id])
+    }, [])
 
     return (
         <>
             {
-                product.map(item =>
+                product.filter(item => item.categoryId === id).map(item =>
                 (
                     <Item
                         key={item.id}
@@ -38,4 +37,4 @@ const ItemList = () => {
         </>
     );
 }
-export default ItemList;
+export default ItemListByCategory;
